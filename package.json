@@ -1,0 +1,26 @@
+{
+    "name": "graphqldemo",
+    "version": "1.0.0",
+    "description": "",
+    "main": "server.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "node server.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Heerschop/azure-myuvaapp.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Heerschop/azure-myuvaapp/issues"
+    },
+    "homepage": "https://github.com/Heerschop/azure-myuvaapp#readme",
+    "dependencies": {
+        "express": "^4.15.4",
+        "express-graphql": "^0.6.7",
+        "graphql": "^0.10.5",
+        "lodash": "^4.17.4"
+    }
+}
