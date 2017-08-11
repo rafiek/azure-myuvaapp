@@ -1,5 +1,5 @@
 const qraphql = require('graphql');
-const _ = require('lodash');
+const axios = require('axios');
 const {
     GraphQLObjectType,
     GraphQLString,
@@ -7,28 +7,49 @@ const {
     GraphQLSchema
 } = qraphql;
 
-const users = [
-    { id: '23', firstName: 'Bill', age: 20 },
-    { id: '47', firstName: 'Samantha', age: 21 }
-]
+// const users = [
+//     { id: '23', firstName: 'Bill', age: 20 },
+//     { id: '47', firstName: 'Samantha', age: 21 }
+// ]
 
-const UserType = new GraphQLObjectType({
-    name: 'User',
+// const UserType = new GraphQLObjectType({
+//     name: 'User',
+//     fields: {
+//         id: { type: GraphQLString },
+//         firstName: { type: GraphQLString },
+//         age: { type: GraphQLInt },
+//     }
+// })
+
+const BuildingType = new GraphQLObjectType({
+    name: 'Building',
     fields: {
+        address: { type: GraphQLString },
+        city: { type: GraphQLString },
+        cluster: { type: GraphQLString },
+        content: { type: GraphQLString },
+        description: { type: GraphQLString },
         id: { type: GraphQLString },
-        firstName: { type: GraphQLString },
-        age: { type: GraphQLInt },
+        lastModified: { type: GraphQLString },
+        lat: { type: GraphQLString },
+        lon: { type: GraphQLString },
+        name: { type: GraphQLString },
+        phone: { type: GraphQLString },
+        postalCode: { type: GraphQLString },
+        thumbnail: { type: GraphQLString },
+        url: { type: GraphQLString }
     }
 })
 
 const RootQuery = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        user: {
-            type: UserType,
+        building: {
+            type: BuildingType,
             args: { id: { type: GraphQLString } },
             resolve(parentValue, args) {
-                return _.find(users, { id: args.id });
+                return axios.get(`https://myuvaapp-575f7.firebaseio.com/buildings/${args.id}.json`)
+                    .then(response => response.data);
             }
         }
     }

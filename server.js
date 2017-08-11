@@ -5,7 +5,7 @@ const schema = require('./schema/schema');
 const app = express();
 
 app.get('/', (req, res) => {
-    res.send('Hello Kerbin Version ' + process.version);
+    res.send('Hello Kerbin Version: 1.0.0  Node Version: ' + process.version);
 });
 
 app.use('/graphql', expressGraphQL({

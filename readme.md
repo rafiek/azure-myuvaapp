@@ -18,9 +18,10 @@ npm start
 ### Example Query
 ```
 {
-  user(id:"23"){
-    firstName,
-    age
+  building(id:"19"){
+    address,
+    city,
+    description
   }
 }
 ```
