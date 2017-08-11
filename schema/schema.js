@@ -51,6 +51,13 @@ const RootQuery = new GraphQLObjectType({
                 return axios.get(`https://myuvaapp-575f7.firebaseio.com/buildings/${args.id}.json`)
                     .then(response => response.data);
             }
+        },
+        allBuildings: {
+            type: new GraphQLList(Building),
+            resolve(parentValue, args){
+                return axios.get(`https://myuvaapp-575f7.firebaseio.com/buildings.json`)
+                    .then(response => response.data);
+            }
         }
     }
 });
